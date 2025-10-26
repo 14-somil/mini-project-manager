@@ -1,29 +1,36 @@
-# Mini Project Manager
+# 🗂️ Mini Project Manager
 
-A full-stack project management application built with C# .NET 8 backend and React + TypeScript frontend. Users can create projects, manage tasks, and track completion status with JWT-based authentication.
+A full-stack project management application built with **C# .NET 8** backend and **React + TypeScript** frontend.  
+Users can create projects, manage tasks, and automatically plan work schedules with a **Smart Scheduler API**, using secure **JWT-based authentication**.
 
-## Features
+---
 
-- User authentication with JWT tokens
-- Create, read, update, and delete projects
-- Create, read, update, and delete tasks within projects
-- Mark tasks as completed/incomplete
-- Filter tasks by status (All, Active, Completed)
-- Sort tasks by creation date, due date, or title
-- Responsive UI with modern design
-- In-memory data storage (no database setup required)
+## ✨ Features
 
-## Prerequisites
+- 🔐 User authentication with JWT tokens  
+- 📁 Create, read, update, and delete projects  
+- ✅ Create, read, update, and delete tasks within projects  
+- 🕒 Mark tasks as completed/incomplete  
+- 🔍 Filter and sort tasks (status, date, title)  
+- 🧠 **Smart Scheduler API** to auto-plan tasks within a project  
+- 📱 Responsive UI with modern design  
+- 💾 In-memory data storage (no database setup required)
+
+---
+
+## ⚙️ Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- **.NET 8 SDK** - Download from [dotnet.microsoft.com](https://dotnet.microsoft.com/download)
-- **Node.js 18+** - Download from [nodejs.org](https://nodejs.org)
-- **npm** - Comes with Node.js
+- **.NET 8 SDK** — [Download here](https://dotnet.microsoft.com/download)
+- **Node.js 18+** — [Download here](https://nodejs.org)
+- **npm** — Comes with Node.js
 
-## Project Structure
+---
 
-\`\`\`
+## 🗂️ Project Structure
+
+```
 mini-project-manager/
 ├── backend/                    # C# .NET 8 API
 │   ├── Controllers/           # API endpoints
@@ -40,227 +47,204 @@ mini-project-manager/
 │   │   └── App.tsx           # Main app component
 │   └── package.json
 └── README.md
-\`\`\`
+```
 
-## Backend Setup
+---
 
-### 1. Navigate to Backend Directory
+## 🚀 Backend Setup
 
-\`\`\`bash
+```bash
 cd backend
-\`\`\`
-
-### 2. Restore Dependencies
-
-\`\`\`bash
 dotnet restore
-\`\`\`
-
-### 3. Run the Backend Server
-
-\`\`\`bash
 dotnet run
-\`\`\`
+```
 
-The backend will start on `http://localhost:5000` and expose Swagger documentation at `http://localhost:5000/swagger`.
+The backend will start on **http://localhost:5000**  
+Swagger docs: [http://localhost:5000/swagger](http://localhost:5000/swagger)
 
-**Backend runs on:** `http://localhost:5000`
+---
 
-## Frontend Setup
+## 💻 Frontend Setup
 
-### 1. Navigate to Frontend Directory
-
-\`\`\`bash
+```bash
 cd frontend
-\`\`\`
-
-### 2. Install Dependencies
-
-\`\`\`bash
 npm install
-\`\`\`
-
-### 3. Run the Frontend Development Server
-
-\`\`\`bash
 npm run dev
-\`\`\`
+```
 
-The frontend will start on `http://localhost:5173` (or another port if 5173 is in use).
+The frontend will start on **http://localhost:5173**
 
-**Frontend runs on:** `http://localhost:5173`
+---
 
-## Running Both Together
+## 🔄 Running Both Together
 
-To run the full application:
-
-1. **Terminal 1 - Backend:**
-   \`\`\`bash
+1. **Backend**
+   ```bash
    cd backend
    dotnet run
-   \`\`\`
-
-2. **Terminal 2 - Frontend:**
-   \`\`\`bash
+   ```
+2. **Frontend**
+   ```bash
    cd frontend
    npm run dev
-   \`\`\`
+   ```
+3. Open your browser → `http://localhost:5173`
 
-3. Open your browser and navigate to `http://localhost:5173`
+---
 
-## API Endpoints
+## 📡 API Endpoints
 
-### Authentication
+### 🧩 Authentication
 
-- `POST /api/auth/register` - Register a new user
-  \`\`\`json
-  {
-    "email": "user@example.com",
-    "password": "password123",
-    "username": "username"
-  }
-  \`\`\`
+| Method | Endpoint | Description |
+|:------:|:----------|:-------------|
+| POST | `/api/v1/auth/register` | Register new user |
+| POST | `/api/v1/auth/login` | Login existing user |
 
-- `POST /api/auth/login` - Login user
-  \`\`\`json
-  {
-    "email": "user@example.com",
-    "password": "password123"
-  }
-  \`\`\`
+**Example — Register**
+```json
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "username": "username"
+}
+```
 
-### Projects
+---
 
-- `GET /api/projects` - Get all projects (requires auth)
-- `GET /api/projects/{projectId}` - Get project by ID (requires auth)
-- `POST /api/projects` - Create new project (requires auth)
-  \`\`\`json
-  {
-    "title": "Project Name",
-    "description": "Optional description"
-  }
-  \`\`\`
-- `DELETE /api/projects/{projectId}` - Delete project (requires auth)
+### 📁 Projects
 
-### Tasks
+| Method | Endpoint | Description |
+|:------:|:----------|:-------------|
+| GET | `/api/v1/projects` | Get all projects (auth required) |
+| GET | `/api/v1/projects/{projectId}` | Get project by ID |
+| POST | `/api/v1/projects` | Create new project |
+| DELETE | `/api/v1/projects/{projectId}` | Delete project |
 
-- `GET /api/projects/{projectId}/tasks` - Get all tasks in project (requires auth)
-- `POST /api/projects/{projectId}/tasks` - Create new task (requires auth)
-  \`\`\`json
-  {
-    "title": "Task Name",
-    "description": "Optional description",
-    "dueDate": "2025-12-31"
-  }
-  \`\`\`
-- `PUT /api/projects/{projectId}/tasks/{taskId}` - Update task (requires auth)
-  \`\`\`json
-  {
-    "title": "Updated Title",
-    "isCompleted": true,
-    "dueDate": "2025-12-31"
-  }
-  \`\`\`
-- `DELETE /api/projects/{projectId}/tasks/{taskId}` - Delete task (requires auth)
+**Example**
+```json
+{
+  "title": "Project Name",
+  "description": "Optional description"
+}
+```
 
-## Environment Variables
+---
 
-### Frontend
+### ✅ Tasks
 
-Create a `.env.local` file in the `frontend` directory (optional):
+| Method | Endpoint | Description |
+|:------:|:----------|:-------------|
+| GET | `/api/v1/projects/{projectId}/tasks` | Get all tasks |
+| POST | `/api/v1/projects/{projectId}/tasks` | Create new task |
+| PUT | `/api/v1/projects/{projectId}/tasks/{taskId}` | Update task |
+| DELETE | `/api/v1/projects/{projectId}/tasks/{taskId}` | Delete task |
 
-\`\`\`
-VITE_API_URL=http://localhost:5000/api
-\`\`\`
+**Example**
+```json
+{
+  "title": "Task Name",
+  "description": "Optional description",
+  "dueDate": "2025-12-31"
+}
+```
 
-If not set, defaults to `http://localhost:5000/api`
+---
+
+### 🧠 Smart Scheduler API (Assignment 2 Enhancement)
+
+This API helps users **auto-plan their tasks** within a project based on due dates and available work hours.
+
+| Method | Endpoint | Description |
+|:------:|:----------|:-------------|
+| POST | `/api/v1/projects/{projectId}/schedule` | Generate optimized task schedule |
+
+**Example Input**
+```json
+{
+  "tasks": [
+    { "title": "Design UI", "estimatedHours": 5, "dueDate": "2025-10-30" },
+    { "title": "Implement Backend", "estimatedHours": 8, "dueDate": "2025-10-28" },
+    { "title": "Integration Testing", "estimatedHours": 4, "dueDate": "2025-11-02" }
+  ],
+  "workHoursPerDay": 6
+}
+```
+
+**Example Output**
+```json
+{
+  "schedule": [
+    { "task": "Implement Backend", "startDate": "2025-10-26", "endDate": "2025-10-27" },
+    { "task": "Design UI", "startDate": "2025-10-28", "endDate": "2025-10-29" },
+    { "task": "Integration Testing", "startDate": "2025-10-30", "endDate": "2025-10-30" }
+  ],
+  "totalDurationDays": 5
+}
+```
+
+**Notes**
+- Generates a plan based on due dates and estimated effort  
+- Adds visual feedback and loading indicators in the frontend  
+- Mobile-friendly UI and deployable setup (backend: Render, frontend: Vercel)
+
+---
+
+## ⚙️ Environment Variables
+
+### Frontend (`.env.local`)
+```bash
+VITE_API_URL=http://localhost:5000/api/v1
+```
 
 ### Backend
+- Uses in-memory storage by default  
+- JWT secret defined in `Program.cs` (update for production)
 
-The backend uses in-memory storage by default. JWT secret key is set to a default value in development. For production, update the JWT secret in `Program.cs`.
+---
 
-## Usage Guide
+## 🧭 Usage Guide
 
-### 1. Register/Login
+1. **Register/Login**
+   - Sign up or log in to get JWT token
+2. **Create a Project**
+   - Add a title and optional description
+3. **Add and Manage Tasks**
+   - Create tasks, mark complete/incomplete, filter/sort them
+4. **Use Smart Scheduler**
+   - Click “Auto Schedule” to generate task plan
+5. **Delete Projects**
+   - Removes all associated tasks
 
-- Navigate to the login page
-- Click "Sign up" to create a new account
-- Enter email, password, and username
-- After registration, you'll be redirected to login
-- Enter your credentials to access the dashboard
+---
 
-### 2. Create a Project
+## 🧱 Troubleshooting
 
-- Click "New Project" button on the dashboard
-- Enter project title and optional description
-- Click "Create" to save
+- Ensure backend (`dotnet run`) and frontend (`npm run dev`) are both running  
+- Check CORS settings if API calls fail  
+- Clear browser cache/localStorage if authentication issues occur  
 
-### 3. Manage Tasks
+---
 
-- Click on a project to view its tasks
-- Click "Add Task" to create a new task
-- Enter task title, optional description, and due date
-- Use the filter dropdown to view All, Active, or Completed tasks
-- Use the sort dropdown to organize tasks by date or title
-- Click the checkbox to mark tasks as complete
-- Click the trash icon to delete tasks
+## 🧩 Development Notes
 
-### 4. Delete Projects
+- Backend uses in-memory data — resets on restart  
+- JWT tokens stored in browser `localStorage`  
+- CORS allows requests from `localhost:3000` and `localhost:5173`  
+- Smart Scheduler runs fully on backend logic  
 
-- Click the trash icon on a project card to delete it
-- All associated tasks will be deleted
+---
 
-## Troubleshooting
+## 🚧 Future Enhancements
 
-### Backend won't start
+- Persistent database (SQL Server / PostgreSQL / SQLite)  
+- Task priorities, categories, and analytics  
+- Team collaboration & comments  
+- **AI-based Scheduler v2** for smarter rescheduling  
+- Email notifications  
 
-- Ensure .NET 8 SDK is installed: `dotnet --version`
-- Check if port 5000 is available
-- Try: `dotnet clean` then `dotnet run`
+---
 
-### Frontend won't start
+## 🪪 License
 
-- Ensure Node.js 18+ is installed: `node --version`
-- Delete `node_modules` and `package-lock.json`, then run `npm install`
-- Check if port 5173 is available
-
-### API connection errors
-
-- Verify backend is running on `http://localhost:5000`
-- Check browser console for error messages
-- Ensure CORS is properly configured (should allow localhost:5173)
-- Clear browser cache and localStorage
-
-### Authentication issues
-
-- Clear localStorage: Open DevTools → Application → Local Storage → Clear All
-- Log out and log back in
-- Check that JWT token is being stored in localStorage
-
-### Tasks not appearing
-
-- Refresh the page
-- Verify you're logged in
-- Check that the project ID in the URL matches an existing project
-- Open browser DevTools to check for API errors
-
-## Development Notes
-
-- The backend uses in-memory database, so data resets when the server restarts
-- JWT tokens are stored in browser localStorage
-- All API requests require authentication except login/register
-- CORS is configured to allow requests from localhost:3000 and localhost:5173
-
-## Future Enhancements
-
-- Persistent database (SQL Server, PostgreSQL, or SQLite)
-- Task priorities and categories
-- Task comments and attachments
-- Team collaboration features
-- Email notifications
-- Task templates
-- Advanced scheduling and analytics
-
-## License
-
-This project is provided as-is for educational purposes.
+This project is provided **as-is for educational purposes**.
