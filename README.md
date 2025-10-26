@@ -98,8 +98,8 @@ The frontend will start on **http://localhost:5173**
 
 | Method | Endpoint | Description |
 |:------:|:----------|:-------------|
-| POST | `/api/v1/auth/register` | Register new user |
-| POST | `/api/v1/auth/login` | Login existing user |
+| POST | `/api/auth/register` | Register new user |
+| POST | `/api/auth/login` | Login existing user |
 
 **Example — Register**
 ```json
@@ -116,10 +116,10 @@ The frontend will start on **http://localhost:5173**
 
 | Method | Endpoint | Description |
 |:------:|:----------|:-------------|
-| GET | `/api/v1/projects` | Get all projects (auth required) |
-| GET | `/api/v1/projects/{projectId}` | Get project by ID |
-| POST | `/api/v1/projects` | Create new project |
-| DELETE | `/api/v1/projects/{projectId}` | Delete project |
+| GET | `/api/projects` | Get all projects (auth required) |
+| GET | `/api/projects/{projectId}` | Get project by ID |
+| POST | `/api/projects` | Create new project |
+| DELETE | `/api/projects/{projectId}` | Delete project |
 
 **Example**
 ```json
@@ -135,10 +135,10 @@ The frontend will start on **http://localhost:5173**
 
 | Method | Endpoint | Description |
 |:------:|:----------|:-------------|
-| GET | `/api/v1/projects/{projectId}/tasks` | Get all tasks |
-| POST | `/api/v1/projects/{projectId}/tasks` | Create new task |
-| PUT | `/api/v1/projects/{projectId}/tasks/{taskId}` | Update task |
-| DELETE | `/api/v1/projects/{projectId}/tasks/{taskId}` | Delete task |
+| GET | `/api/projects/{projectId}/tasks` | Get all tasks |
+| POST | `/api/projects/{projectId}/tasks` | Create new task |
+| PUT | `/api/projects/{projectId}/tasks/{taskId}` | Update task |
+| DELETE | `/api/projects/{projectId}/tasks/{taskId}` | Delete task |
 
 **Example**
 ```json
@@ -157,7 +157,7 @@ This API helps users **auto-plan their tasks** within a project based on due dat
 
 | Method | Endpoint | Description |
 |:------:|:----------|:-------------|
-| POST | `/api/v1/projects/{projectId}/schedule` | Generate optimized task schedule |
+| POST | `/api/projects/{projectId}/schedule` | Generate optimized task schedule |
 
 **Example Input**
 ```json
@@ -194,7 +194,7 @@ This API helps users **auto-plan their tasks** within a project based on due dat
 
 ### Frontend (`.env.local`)
 ```bash
-VITE_API_URL=http://localhost:5000/api/v1
+VITE_API_URL=http://localhost:5000/api
 ```
 
 ### Backend
