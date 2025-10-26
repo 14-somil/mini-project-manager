@@ -112,7 +112,7 @@ To run the full application:
 
 ### Authentication
 
-- `POST /api/v1/auth/register` - Register a new user
+- `POST /api/auth/register` - Register a new user
   \`\`\`json
   {
     "email": "user@example.com",
@@ -121,7 +121,7 @@ To run the full application:
   }
   \`\`\`
 
-- `POST /api/v1/auth/login` - Login user
+- `POST /api/auth/login` - Login user
   \`\`\`json
   {
     "email": "user@example.com",
@@ -131,21 +131,21 @@ To run the full application:
 
 ### Projects
 
-- `GET /api/v1/projects` - Get all projects (requires auth)
-- `GET /api/v1/projects/{projectId}` - Get project by ID (requires auth)
-- `POST /api/v1/projects` - Create new project (requires auth)
+- `GET /api/projects` - Get all projects (requires auth)
+- `GET /api/projects/{projectId}` - Get project by ID (requires auth)
+- `POST /api/projects` - Create new project (requires auth)
   \`\`\`json
   {
     "title": "Project Name",
     "description": "Optional description"
   }
   \`\`\`
-- `DELETE /api/v1/projects/{projectId}` - Delete project (requires auth)
+- `DELETE /api/projects/{projectId}` - Delete project (requires auth)
 
 ### Tasks
 
-- `GET /api/v1/projects/{projectId}/tasks` - Get all tasks in project (requires auth)
-- `POST /api/v1/projects/{projectId}/tasks` - Create new task (requires auth)
+- `GET /api/projects/{projectId}/tasks` - Get all tasks in project (requires auth)
+- `POST /api/projects/{projectId}/tasks` - Create new task (requires auth)
   \`\`\`json
   {
     "title": "Task Name",
@@ -153,7 +153,7 @@ To run the full application:
     "dueDate": "2025-12-31"
   }
   \`\`\`
-- `PUT /api/v1/projects/{projectId}/tasks/{taskId}` - Update task (requires auth)
+- `PUT /api/projects/{projectId}/tasks/{taskId}` - Update task (requires auth)
   \`\`\`json
   {
     "title": "Updated Title",
@@ -161,7 +161,7 @@ To run the full application:
     "dueDate": "2025-12-31"
   }
   \`\`\`
-- `DELETE /api/v1/projects/{projectId}/tasks/{taskId}` - Delete task (requires auth)
+- `DELETE /api/projects/{projectId}/tasks/{taskId}` - Delete task (requires auth)
 
 ## Environment Variables
 
@@ -170,10 +170,10 @@ To run the full application:
 Create a `.env.local` file in the `frontend` directory (optional):
 
 \`\`\`
-VITE_API_URL=http://localhost:5000/api/v1
+VITE_API_URL=http://localhost:5000/api
 \`\`\`
 
-If not set, defaults to `http://localhost:5000/api/v1`
+If not set, defaults to `http://localhost:5000/api`
 
 ### Backend
 

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace backend.Controllers
 {
     [ApiController]
-    [Route("api/v1/projects/{projectId}/[controller]")]
+    [Route("api/projects/{projectId}/[controller]")]
     [Authorize]
     public class TasksController : ControllerBase
     {
