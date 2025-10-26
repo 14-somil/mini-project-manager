@@ -13,6 +13,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { getProjectById, createTask, updateTask, deleteTask } from "@/lib/api-client"
 import TaskItem from "@/components/task-item"
+import { TaskScheduler } from "@/components/task-scheduler"
 
 interface Task {
   id: number
@@ -207,6 +208,10 @@ export default function ProjectDetailsPage() {
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
+
+        <div className="mb-8">
+          <TaskScheduler projectId={Number.parseInt(projectId)} onScheduleComplete={fetchProject} />
+        </div>
 
         {/* Add Task Section */}
         {!showForm ? (

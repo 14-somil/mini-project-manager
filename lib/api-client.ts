@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1"
 
 function getHeaders() {
   const token = typeof window !== "undefined" ? localStorage.getItem("token") : null
@@ -93,4 +93,25 @@ export async function deleteTask(projectId: number, taskId: number) {
     headers: getHeaders(),
   })
   if (!response.ok) throw new Error("Failed to delete task")
+}
+
+export async function scheduleProjectTasks(
+  projectId: number,
+  startDate: string,
+  endDate: string,
+  hoursPerDay = 8,
+  workDaysPerWeek = 5,
+) {
+  const response = await fetch(`${API_BASE_URL}/projects/${projectId}/scheduler/schedule`, {
+    method: "POST",
+    headers: getHeaders(),
+    body: JSON.stringify({
+      startDate,
+      endDate,
+      hoursPerDay,
+      workDaysPerWeek,
+    }),
+  })
+  if (!response.ok) throw new Error("Failed to schedule tasks")
+  return response.json()
 }

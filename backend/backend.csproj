@@ -13,6 +13,7 @@
     <!-- Updated System.IdentityModel.Tokens.Jwt to 7.0.3 to fix version conflict and security vulnerability -->
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
     <!-- Updated Swashbuckle.AspNetCore to 6.5.0 to resolve version mismatch -->
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />  </ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
 
 </Project>

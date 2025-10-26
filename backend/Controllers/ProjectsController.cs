@@ -7,7 +7,7 @@ using System.Security.Claims;
 namespace backend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [Authorize]
     public class ProjectsController : ControllerBase
     {
